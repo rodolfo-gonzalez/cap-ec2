@@ -24,7 +24,8 @@ module CapEC2
       {
         :public_dns => :public_dns_name,
         :public_ip => :public_ip_address,
-        :private_ip => :private_ip_address
+        :private_ip => :private_ip_address,
+        :private_dns => :private_dns_name
       }
     end
 
@@ -32,7 +33,7 @@ module CapEC2
       ec2_interface = contact_point_mapping[fetch(:ec2_contact_point)]
       return instance.send(ec2_interface) if ec2_interface
 
-      instance.public_dns_name || instance.public_ip_address || instance.private_ip_address
+      instance.public_dns_name || instance.public_ip_address || instance.private_ip_address || instance.private_dns_name
     end
 
     def load_config
