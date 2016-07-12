@@ -57,6 +57,7 @@ module CapEC2
     def filter
       f = Capistrano::Configuration.env.fetch(:ec2_filter)
       f.respond_to?(:call) ? f.call : f
+      puts f
     end
 
     def default_filter
